@@ -1,18 +1,17 @@
 import axios from 'axios';
 
 const API_KEY = process.env.REACT_APP_NEWS_API_KEY;
-const BASE_URL = 'https://newsapi.org/v2';
 
 export const getNews = async (query) => {
     try {
-        const response = await axios.get(`${BASE_URL}/everything`, {
+        const response = await axios.get(`https://newsapi.org/v2/top-headlines`, {
             params: {
-                pageSize: 12,
-                category: 'entertainment',
-                page: 1,
-                sortBy: 'relevancy',
                 q: query,
                 apiKey: API_KEY,
+                category: 'technology',
+                country: 'us',
+                pageSize: 20,
+                page: 1,
             },
         });
         return response.data.articles;
